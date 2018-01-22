@@ -13,9 +13,17 @@ import (
     "github.com/shirou/gopsutil/load"
 )
 
-func gitmuxline(path string) error {
+type TmuxLine struct {
+    num_indexed     int
+    num_modified    int
+    num_deleted     int
+    num_conflict    int
+    num_untracked   int
+}
 
-    var gitline string
+func (tmuxLine *TmuxLine) gitmuxline(path string) error {
+
+    var resultLine string
     // num_indexed     := 0
     // num_modified    := 0
     // num_deleted     := 0
